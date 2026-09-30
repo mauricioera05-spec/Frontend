@@ -1,122 +1,135 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
-
+import './App.css' //Importe de estilo para App.jsx
+import { useState } from 'react' //Importe de useState para manejar el estado del componente
+import { useEffect } from 'react' //Importe de useEffect para manejar efectos secundarios en el componente
+import TitleCard from './TitleCard' //Importe del componente TitleCard para mostrar tarjetas de título
+import './TitleCard.css' //Importe de estilo para TitleCard.jsx
 function App() {
-  const [count, setCount] = useState(0)
+  //Declaraciones
+  let mensaje1 = "Hola,";
+  let mensaje2 = " mundo.";
+  let num1;
+  let num2;
+  let num3;
+  const colores = ["rojo", "azul", "amarillo"];
+  const [count, setCount] = useState(0);
+  //Asignaciones fundamentales de variables
+  num1 = 10;
+  num2 = 20;
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+  //Operaciones aritméticas básicas ded variables
+  num3 = num1 + num2;
 
-      <div className="ticks"></div>
+  //La función useEffect se ejecuta después de que el componente se renderiza o variables cambian, y
+    //puede ser utilizada para realizar efectos secundarios, como alertas o llamadas a APIs.
+  useEffect(() => {
+    alert("Uso de la función useEffect sin dependencias: " + mensaje1 + " " + mensaje2);
+  }, []);//El segundo parámetro es un arreglo de dependencias, que indica que el
+            // efecto solo se ejecutará una vez, al montar el componente.
+            //Un arreglo vacío significa que el efecto se ejecuta una sola vez al montar el componente.
+            
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+  useEffect(() => {
+    alert("Uso de la función useEffect con dependencias: " +"El contador cambió a:" + count);
+  }, [count]);
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+  //Se imprimen los valores de las variables en la consola del navegador
+  console.log(mensaje1 + " " + mensaje2);
+  console.log(num3);
+  
+  //Comparación de valores y tipos de datos
+    //(== compara valores, === compara valores y tipos de datos)
+  if(num1 == 10){
+    console.log("num1 es igual a 10");
+  }
+  if(num1 === "10"  ){
+    console.log("num1 es igual a '10' (string)");
+  }else{
+    console.log("num1 no es igual a '10' (string)");
+  }
+
+  //Condicion ternaria
+  //
+  let resultado = (num1 > num2) ? "num1 es mayor que num2" : "num1 es menor o igual que num2";
+  console.log(resultado);
+
+  //Métodos para manipular cadenas de texto
+  console.log("La longitud del mensaje 1 es: " + mensaje1.length);
+  console.log("Mensaje 1 en mayúsculas: " + mensaje1.toUpperCase());
+  console.log("Mensaje 1 en minúsculas: " + mensaje1.toLowerCase());
+  console.log("¿El mensaje 1 contiene un saludo?: " + (mensaje1.includes("Hola") ? "Sí" : "No"));
+  console.log("El mensaje 1 contiene " + mensaje1.split("").length + " caracteres");
+  let mensaje = mensaje1 + 
+  mensaje2;
+  console.log("El método trim() elimina los espacios al inicio y al final de la cadena: " + mensaje.trim());
+  
+  
+  
+  return(
+    <div>
+      
+    
+
+      <TitleCard
+        image="public/234.jpg"
+        alt="Imagen de gato"
+        title="Título"
+        subtitle="Subtítulo"
+        date="2026-09-29"
+        />
+
+      {/*En JSX, el return solo puede devolver un elemento padre, 
+      por lo que se debe encerrar todo en un div*/} 
+      {/*Expresiones en JSX son encerradas entre llaves "{}"*/}
+
+      <h1> {mensaje1} </h1>
+      
+      <p>{num3}</p> 
+
+      <BotonContador count = {count} setCount ={setCount} /> {/*Llamada componente botonContador.*/}
+
+      <ListaColores colores = {colores} /> {/*Llama al componente listaColores.*/}
+
+      <BotonAlerta /> {/*Se llama al componente BotonAlerta, que es un botón que muestra una alerta al hacer clic*/}
+        
+      <p><ImagenGato/></p>
+      
+
+    </div> 
+
+
+
+  )
+  
+}
+
+
+function ImagenGato(){
+  return (<img 
+    src="public/234.jpg" 
+    alt="Imagen de gato" 
+    width="105" height="100" 
+    />
+    );
+}
+
+function BotonAlerta(){
+  return <button onClick={() => alert("¡Hola! Soy una alerta desde un componente separado.")}> Mostrar Alerta </button>;
+}
+
+function ListaColores({colores}){
+/*Se crea una lista desordenada con los colores */
+  return(
+      <ul>
+        {colores.map((color, index) => (
+          <li type="disc" key={index}> {color} </li>
+          ))}
+      </ul>
   )
 }
 
-export default App
+function BotonContador({count, setCount}){
+  
+  return <button onClick = {() => setCount(count => count + 1)} > {count} </button>;
+}
+
+export default App //Hace que el componente App pueda ser importado en otros archivos, como index.jsx
